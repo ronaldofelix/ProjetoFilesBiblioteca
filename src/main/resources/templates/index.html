@@ -1,0 +1,108 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+</html>
+
+<head>
+    <title>Biblioteca de Midias</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body style="background-color: #121212; color: #FFFFFF;">
+
+    <nav class="navbar navbar-expand-lg navbar-dark custom-bg-color">
+        <a class="navbar-brand" href="#" style="margin-left: 10px;">SafeTransfer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Página Inicial</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sobre">Sobre nós</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contato">Contato</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div align="center" id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://sjc04pap002files.storage.live.com/y4mcjGvUCIafmDumeBg4mxvjgCTA1EGbiRtZXD7ewaIEhT7TqirTT3jUQawsGyK8vUJiVGqc3jvM55uSO6je41FE6kwsktaAnznsEfI1HsZfBeXvWvZX6eJ_qH5DCkb57UdxjFyt6K3B-NdhtyS6s7JAkWSzFfuVwPdQovRcgYpsc6cDe_iOSK7o5epFLpeLkTW?width=1562&height=719&cropmode=none"
+                    class="d-block w-60" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://sjc04pap002files.storage.live.com/y4mrrtCEzVmcYBBe-LIW1-OT748_HUdSFPtW3yVRr3zDwZR7R8-YOF_zXlOWQ1Jrhk40HTYX92kwvCd5Q2P9AL0BI-rL-4G0RWv7IitG00R2o6CNbMCApoEb8U4wlrpbwAYiAeJXLQL__ymsOZIjxaKCqWDoqZ8aVKcZsGq8OkInhum9P3kA-STuQnjav-UKt1H?width=1191&height=687&cropmode=none"
+                    class="d-block w-60" alt="Image 2">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div align="center">
+        <img src="https://cdn-icons-png.flaticon.com/512/7599/7599684.png" alt="Upload"
+            style="width: 100px; height: 100px; filter: invert(100%);">
+        <h1>Upload de Arquivo</h1>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <label for="description">Descrição:</label>
+            <input type="text" id="description" name="description"><br><br>
+            <label for="file">Arquivo:</label>
+            <input type="file" id="file" name="file"><br><br>
+            <input type="submit" value="Enviar"
+                style="background-color: #373737; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+        </form>
+        <br>
+        <br>
+        <br>
+        <img src="https://cdn-icons-png.flaticon.com/512/937/937336.png" alt="Upload"
+            style="width: 100px; height: 100px; filter: invert(100%);">
+        <h1>Download de Arquivo</h1>
+        <form method="get" action="/download">
+            <label for="fileName">Nome do Arquivo:</label>
+            <input type="text" id="fileName" name="file"><br><br>
+            <input type="submit" value="Baixar"
+                style="background-color: #373737; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+        </form>
+        <br>
+        <br>
+        <br>
+        <img src="https://cdn-icons-png.flaticon.com/512/32/32743.png" alt="Upload"
+            style="width: 100px; height: 100px; filter: invert(100%);">
+        <h1>Listar Arquivos</h1>
+        <form action="#" th:action="@{/listar-arquivos}" method="get">
+            <button type="submit"
+                style="background-color: #373737; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+                Arquivos</button>
+        </form>
+        <br>
+        <br>
+        <div th:if="${not #lists.isEmpty(arquivos)}"></div>
+        <h2>Arquivos:</h2>
+        <ul>
+            <li th:each="arquivo : ${arquivos}">
+                <a th:href="@{'/download?file=' + ${arquivo}}" th:text="${arquivo}"></a>
+            </li>
+        </ul>
+        <br>
+        <br>
+
+
+        <script src="/webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
